@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    image: strawhatluffy420/webserver-image
+    ports:
+      - "80:80"
+    environment:
+      - DATABASE_URL=postgres://dbuser:dbpassword@database/dbname
+    depends_on:
+      - database
+  database:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=dbname
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=dbpassword
